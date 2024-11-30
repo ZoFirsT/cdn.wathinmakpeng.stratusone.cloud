@@ -1,34 +1,15 @@
 #!/bin/bash
 
-# Function to make auto commit with popular commit messages
-auto_commit() {
-    local messages=(
-        "Initial commit"
-        "Update documentation"
-        "Fix bug"
-        "Add new feature"
-        "Code cleanup"
-        "Improve performance"
-        "Update dependencies"
-        "Refactor code"
-        "Fix typo"
-        "Minor changes"
-    )
-    
-    # Check if there are changes to commit
-    if [[ -n $(git status -s) ]]; then
-        # Get random message from array
-        local random_index=$((RANDOM % ${#messages[@]}))
-        local commit_message="${messages[random_index]}"
-        
-        # Add all changes and commit
-        git add .
-        git commit -m "$commit_message"
-        echo "✅ Changes committed with message: $commit_message"
-    else
-        echo "❌ No changes to commit"
-    fi
-}
+# Get current date and time for commit message
+current_datetime=$(date "+%Y-%m-%d %H:%M:%S")
 
-# Execute the function
-auto_commit
+# Add all changes
+git add .
+
+# Commit with timestamp
+git commit -m "Auto commit: $current_datetime"
+
+# Push to remote repository
+git push origin main
+
+echo "Changes committed and pushed successfully at $current_datetime"
