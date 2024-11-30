@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3; url=https://wathinmakpeng.com/">
+    <title>กำลังนำท่านไปยังเว็บไซต์วัดหินมักเพ็ง | Redirecting to Wat Hinmakpeng</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&display=swap');
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, #fef3c7, #fff7ed);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: #1f2937;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #ea580c;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            margin: 2rem auto;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+        }
+        .progress-bar {
+            width: 300px;
+            height: 8px;
+            background: #fee2e2;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem auto;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #ea580c;
+            animation: progress 3s linear forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .skip-button {
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skip-button:hover {
+            background: #c2410c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+    <p>Redirecting to Wat Hinmakpeng website...</p>
+    <p>กำลังนำท่านไปยังเว็บไซต์วัดหินมักเพ็ง...</p>
+    <button onclick="window.location.href='https://wathinmakpeng.com/'" class="skip-button">
+        ข้ามไปยังเว็บไซต์หลัก
+    </button>
+    <script>
+        let timeLeft = 3;
+        const countdownEl = document.createElement('p');
+        document.body.appendChild(countdownEl);
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownEl.textContent = `Redirecting in ${timeLeft} seconds...`;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+            }
+        }, 1000);
+
+        setTimeout(() => {
+            window.location.href = "https://wathinmakpeng.com/";
+        }, 3000);
+    </script>
+</body>
+</html>
