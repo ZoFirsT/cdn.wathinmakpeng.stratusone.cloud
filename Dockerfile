@@ -1,9 +1,10 @@
-# Use a base image with Nginx
 FROM nginx:alpine
 
-# Copy files to Nginx's HTML directory
-COPY . /usr/share/nginx/html
+# Copy the static files to Nginx's default public directory
+COPY . /usr/share/nginx/html/
+
+# Copy custom Nginx configuration if needed
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
-EXPOSE 96
-
+EXPOSE 80
